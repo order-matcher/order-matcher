@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "server": {
+            "type": "object",
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "bind address of server"
+                },
+                "port": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 65535,
+                    "description": "server port"
+                }
+            },
+            "required": [
+                "host",
+                "port"
+            ],
+            "description": "web server settings"
+        }
+    },
+    "required": [
+        "server"
+    ]
+}

@@ -1,0 +1,5 @@
+# pip install -r /path/to/requirements.txt
+flask
+sqlalachemy
+jsonschema
+flask-json-schema
