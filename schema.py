@@ -1,8 +1,10 @@
 from marshmallow import Schema, fields
-
+import datetime
 class ConsumerSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str(required=True)
+    bin = fields.Str(required=True)
+    password = fields.Str(required=True)
     country = fields.Str(required=True)
     city = fields.Str(required=True)
     adress = fields.Str(required=True)
@@ -11,6 +13,8 @@ class ConsumerSchema(Schema):
 class ProviderSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str()
+    bin = fields.Str(required=True)
+    password = fields.Str(required=True)
     country = fields.Str()
     city = fields.Str()
     adress = fields.Str()
@@ -34,7 +38,7 @@ class OrderSchema(Schema):
     id = fields.Int(dump_only=True)
     title = fields.Str()
     description = fields.Str()
-    date_start = fields.DateTime()
+    date_start = fields.DateTime(default=datetime.datetime.utcnow())
     date_end = fields.DateTime()
     contact_person = fields.Str()
     phone = fields.Str()

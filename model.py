@@ -1,9 +1,14 @@
-from tender import db
 import datetime
+
+from database import get
+
+db = get()
 
 class Consumer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
+    bin = db.Column(db.String, nullable=False, unique=True)
+    password = db.Column(db.String, nullable=False)
     country = db.Column(db.String(100), nullable=False)
     city = db.Column(db.String(100), nullable=False)
     adress = db.Column(db.String(100), nullable=False)
@@ -14,6 +19,8 @@ class Consumer(db.Model):
 class Provider(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
+    bin = db.Column(db.String, nullable=False, unique=True)
+    password = db.Column(db.String, nullable=False)
     country = db.Column(db.String(100), nullable=False)
     city = db.Column(db.String(100), nullable=False)
     adress = db.Column(db.String(100), nullable=False)
@@ -32,7 +39,7 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    date_start = db.Column(db.DateTime, default=datetime.utcnow)
+    date_start = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     date_end = db.Column(db.DateTime)
     contact_person = db.Column(db.Text, nullable=False)
     phone = db.Column(db.Text, nullable=False)
@@ -45,7 +52,7 @@ class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    date_offer =  db.Column(db.DateTime, default=datetime.utcnow)
+    date_offer =  db.Column(db.DateTime, default=datetime.datetime.utcnow)
     offered_price = db.Column(db.Float, primary_key=True)
     currency = db.Column(db.String(100), nullable=False)
     contact_person = db.Column(db.Text, nullable=False)

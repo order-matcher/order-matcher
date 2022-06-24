@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from database.schema import *
+from database.schema import ConsumerSchema, ProviderSchema, OrderSchema, CategorySchema
 from marshmallow import ValidationError
 from sqlalchemy.exc import NoResultFound
 from database.model import *
@@ -82,7 +82,7 @@ def registered_handlers(app: Flask):
         provider_result = provider_schema.dump(provider)
         return jsonify(provider_schema.dump(provider_result))
 
-    @app.route("/consumers/add", methods=['POST'])
+    @app.route("/consumers", methods=['POST'])
     def post_consumer():
         json_data = request.get_json()
         if not json_data:
